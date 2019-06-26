@@ -1,21 +1,57 @@
-const clear=document.querySelector(".clear");
-const dateElement = document.getElementById("date");
-const list=document.getElementById("list");
 
-// Show todays date
-const options = {year:"numeric", weekday : "long", month:"short", day:"numeric"};
-const today = new Date();
+var newTask = document.getElementById('new-task');
+var addTaskBtn = document.getElementById('addTask');
+var toDoUl = document.getElementById('todo-list');
+var completeUl =  document.querySelector(".complete-list ul");
+const dateElement = document.getElementById('#date');
 
+// Show todays date and year
+var options = {year:"numeric", weekday : "long", month:"short", day:"numeric"};
+var today = new Date();
 dateElement.innerHTML = today.toLocaleDateString("en-US", options);
 
 
-
-function todoList() {
-    var todoList = document.getElementById('input').value;
+//CREATING THE ACTUAL TASK LIST ITEM
+var createNewTask = function(task){
+    console.log("Creating task...");
     
-     
-    console.log(todoList);
-}
+    //Set up new list item
+    var listItem = document.createElement("li"); //<li>
+    var checkBox = document.createElement("input"); //checkbox
+    var label = document.createElement("label"); // <label>
+    
+    
+    //PULL THE INPUTED TEXT INTO LABEL
+    label.innerText = task;
+    
+    //ADD PROPERTIES
+    checkBox.type = "checkbox";
+    
+    //ADD ITEMS TO THE LI
+    listItem.appendChild(checkBox);
+    listItem.appendChild(label);
+    //EVERYTHING PUT TOGETHER
+    return listItem;  
+    
+  };
 
+//ADD THE NEW TASK INTO ACTUAL INCOMPLETE LIST
 
+addTaskBtn.addEventListener("click", addTask);
 
+ 
+var addTask = function(){
+    console.log("Adding task...");
+    //FOR CLARITY, GRAB THE INPUTTED TEXT AND STORE IT IN A VAR
+    var listItem = createNewTask(newTask.value);
+    //ADD THE NEW LIST ITEM TO LIST
+    toDoUl.appendChild(listItem); 
+    //CLEAR THE INPUT
+    newTask.value="";
+    
+    //BIND THE NEW LIST ITEM TO THE INCOMPLETE LIST
+    bindIncompleteItems(listItem, completeTask);
+  
+  };
+  
+  //https://codepen.io/barkins/pen/aEriL

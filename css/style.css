@@ -2,7 +2,6 @@ body {
        
     margin: 0;
     background-color: rgba(62, 161, 83, 0.1);
-
     font-family: 'Permanent Marker', cursive;
     font-size: 15px;
     color: #FFF;
@@ -74,13 +73,18 @@ body {
     position: relative;
 }
 
-.content{
+.todo-list{
+   
     width: 380px;
     height: 350px;
     max-height: 350;
     background-color: rgb(255, 255, 255);
     overflow: auto;
 }
+.li{
+    padding:10px;
+    border-bottom:1px dotted #CCC;
+  }
 
 .todoList{
     margin: 0;
@@ -111,7 +115,7 @@ body {
 /*ADD*/
 
 
-.add-item{
+.new-task-container{
     width: 380px;
     height: 50px;
     background-image: url(https://media.istockphoto.com/photos/blue-background-picture-id157571423?k=6&m=157571423&s=612x612&w=0&h=vVdeBvLvwtxpARlY2ePOmyFujbgtoMR-EW1qU9j582E=);
@@ -119,10 +123,10 @@ body {
 }
 
 
-#input{
+#new-task{
     margin: 15px;
    }
 
-#pluss{
+#addTask{
     border-radius: 5px;
 }
